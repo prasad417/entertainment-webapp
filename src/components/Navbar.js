@@ -76,6 +76,16 @@ export default withAuth(class Navbar extends Component {
                                 </a>
                             </li>
                             }
+                            {this.state.authenticated === true &&
+                            <li className="nav-item">
+                                <a className="nav-link" href="/profile">
+                                    <i className="material-icons">
+                                        account_circle
+                                    </i>
+                                    Profile
+                                </a>
+                            </li>
+                            }
                             {this.state.authenticated === false &&
                                 <button onClick={this.login} className="btn btn-danger btn-round btn-small"><i className="material-icons">account_circle</i>  Register / Log In</button>
                             }
