@@ -7,7 +7,7 @@ import config from '../config'
 export default withAuth(class Languages extends Component {
   constructor(props) {
     super(props);
-    this.state = { languages: null, failed: null };
+    this.state = { languages: null, failed: false };
   }
 
   componentDidMount() {
@@ -18,22 +18,11 @@ export default withAuth(class Languages extends Component {
     if (!this.state.languages) {
       try {
         const accessToken = `Bearer ${await this.props.auth.getAccessToken()}`;
-        console.log(accessToken)
         /* global fetch */
         const response = await fetch(config.resourceServer.languagesUrl, {
-            method: 'GET',
-            mode: 'cors',
             headers: {
-                // 'Origin': 'http://localhost:3000',
                 'Authorization': accessToken,
-                // 'Content-Type': 'application/json',
-                // 'Accept': 'application/json'
-                
-                // "Access-Control-Allow-Origin": "*",
-                // "Access-Control-Expose-Headers": "Content-Length, X-JSON",
-                // "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-                // "Access-Control-Allow-Headers": "*"
-            },
+            }
         });
 
         if (response.status !== 200) {
@@ -41,23 +30,10 @@ export default withAuth(class Languages extends Component {
           return;
         }
 
-        let index = 0;
         const data = await response.json();
-        const messages = data.messages.map((message) => {
-          const date = new Date(message.date);
-          const day = date.toLocaleDateString();
-          const time = date.toLocaleTimeString();
-          index += 1;
-          return {
-            date: `${day} ${time}`,
-            text: message.text,
-            id: `message-${index}`,
-          };
-        });
-        this.setState({ messages, failed: false });
+        this.setState({ languages: data, failed: false });
       } catch (err) {
         this.setState({ failed: true });
-        /* eslint-disable no-console */
         console.error(err);
       }
     }
@@ -65,10 +41,22 @@ export default withAuth(class Languages extends Component {
 
   render() {
     return (
-      <div>
-        <h1>My Languages Component</h1>
+      <div className="row">
+        {this.state.failed === null && <p>Fetching Messages..</p>}
+        {this.state.languages &&
+          this.state.languages.map(
+            language =>  (
+                <div key={language.languageId} className="card text-center">
+                    <div className="card-body">
+                        <h4 className="card-title">{language.languageName}</h4>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href={`/movies/${language.languageName.toLowerCase()}`} className="btn btn-danger">{language.languageName}</a>
+                    </div>
+                </div>         
+            )
+          )
         }
-      </div>
+        </div>
     );
   }
 });

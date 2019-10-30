@@ -25,6 +25,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <SecureRoute path="/profile" component={Profile} />
             <SecureRoute path="/movies" component={Languages} />
+            <SecureRoute path="/music" component={Languages} />
+            <SecureRoute path="/videos" component={Languages} />
           </Security>
         </Router>
       </div>
