@@ -11,7 +11,7 @@ export default {
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   },
   resourceServer: {
-    languagesUrl: 'http://localhost:8081/api/languages',
-    moviesUrl: 'http://localhost:8081/api/movies'
+    languagesUrl: 'https://aqueous-plains-00870.herokuapp.com/api/languages',
+    moviesUrl: 'https://aqueous-plains-00870.herokuapp.com/api/movies'
   }
 };

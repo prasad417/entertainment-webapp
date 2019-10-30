@@ -52,7 +52,7 @@ export default withAuth(class MovieContent extends Component {
                     <div className="card-body">
                         <h4 className="card-title">{movie.movieName}</h4>
                         <p className="card-text">{`Starring: ${movie.starring}`}</p>
-                        <a href={`/movies/${movie.movieName.toLowerCase()}`} className="btn btn-danger">{movie.movieName}</a>
+                        <a href={`/movies/${this.props.match.params.languageName}/${movie.movieName.toLowerCase()}`} className="btn btn-danger">{movie.movieName}</a>
                     </div>
                 </div>         
             )

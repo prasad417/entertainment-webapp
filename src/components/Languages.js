@@ -49,7 +49,7 @@ export default withAuth(class Languages extends Component {
                 <div key={language.languageId} className="card text-center">
                     <div className="card-body">
                         <h4 className="card-title">{language.languageName}</h4>
-                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        {/* <p className="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
                         <a href={`/movies/${language.languageName.toLowerCase()}`} className="btn btn-danger">{language.languageName}</a>
                     </div>
                 </div>         
