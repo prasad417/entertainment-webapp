@@ -2,6 +2,7 @@
   "name": "entertainment-webapp",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://entertainmentap.herokuapp.com/",
   "dependencies": {
     "@okta/okta-react": "^1.2.3",
     "@okta/okta-signin-widget": "^3.3.3",
