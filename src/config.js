@@ -12,5 +12,6 @@ export default {
   },
   resourceServer: {
     languagesUrl: 'http://localhost:8081/api/languages',
+    moviesUrl: 'http://localhost:8081/api/movies'
   }
 };
