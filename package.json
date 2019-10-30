@@ -2,7 +2,6 @@
   "name": "entertainment-webapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/build", 
   "dependencies": {
     "@okta/okta-react": "^1.2.3",
     "@okta/okta-signin-widget": "^3.3.3",
@@ -17,10 +16,12 @@
     "react-app-rewired": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "dev": "react-app-rewired start",
+    "start": "serve -s build",
     "build": "react-app-rewired build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
