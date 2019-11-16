@@ -11,7 +11,8 @@ export default {
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   },
   resourceServer: {
-    languagesUrl: 'https://aqueous-plains-00870.herokuapp.com/api/languages',
-    moviesUrl: 'https://aqueous-plains-00870.herokuapp.com/api/movies'
+    imageUrl: 'https://prasaddy.x10host.com/Images/',
+    languagesUrl: 'https://entertainment-restapi.herokuapp.com/api/languages',
+    moviesUrl: 'https://entertainment-restapi.herokuapp.com/api/movies'
   }
 };

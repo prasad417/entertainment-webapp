@@ -42,6 +42,10 @@ export default withAuth(class MovieContent extends Component {
   }
 
   render() {
+    const imageStyle = {
+      width: '220px',
+      height: '275px'
+    };
     return (
       <div className="row">
         {this.state.failed === null && <p>Fetching Messages..</p>}
@@ -50,9 +54,10 @@ export default withAuth(class MovieContent extends Component {
             movie =>  (
                 <div key={movie.movieId} className="card text-center">
                     <div className="card-body">
-                        <h4 className="card-title">{movie.movieName}</h4>
-                        <p className="card-text">{`Starring: ${movie.starring}`}</p>
-                        <a href={`/movies/${this.props.match.params.languageName}/${movie.movieName.toLowerCase()}`} className="btn btn-danger">{movie.movieName}</a>
+                      <img src={`${config.resourceServer.imageUrl}${movie.movieImage}`} alt={movie.movieImage} class="mx-auto d-block" style={imageStyle}></img>
+                     
+                      <h4 className="card-title">{`Starring: ${movie.starring}`}</h4>
+                      <a href={`/movies/${this.props.match.params.languageName}/${movie.movieName.toLowerCase()}`} className="btn btn-danger">{movie.movieName}</a>
                     </div>
                 </div>         
             )
